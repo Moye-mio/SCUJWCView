@@ -1,0 +1,87 @@
+html{
+    height: 100%;
+}
+
+body.login{
+    height: auto;
+    background: url("image/蓝.jpg") no-repeat center fixed;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.loginpanel{
+    width: 320px;
+    margin: 10% auto 0 auto;
+}
+
+.loginpanel .input1{
+    border-radius: 7px;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255, 255, 255, 0.3);
+    display: block;
+    margin: 15px 5px 15px 5px;
+    width: 250px;
+    height: 25px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid #f6f6f6;
+}
+
+.loginpanel .input2{
+    border-radius: 7px;
+    border: 0px solid rgba(255,255,255,.3);
+    background: rgba(76, 151, 236, 0.3);
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #f6f6f6;
+    border: 2px solid #f6f6f6;
+}
+
+.loginpanel .p1{
+    border-bottom: 1.5px solid rgba(255,255,255,0.5);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+input:focus{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+.login-footer{
+    border-top: solid 1px rgba(255,255,255,0.3);
+    margin:20px 0;
+    padding-top: 15px;
+}
+
+.loginpanel .form1 {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,.3);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 30px;
+}
+
+.loginpanel .form2{
+    text-align: center;
+}
