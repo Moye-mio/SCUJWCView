@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>Table</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="四川大学盗版教务处课表页面">
+    <meta name="description" content="嘤嘤狂吠嘤">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="table.css" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+
+
+    <script>
+
+        $(function () {
+            //写法稍微复杂，同步请求
+            $.ajax({
+                url: "data1.json",//地址，就是json文件的请求路径
+                type: "GET",//请求方式
+                dataType: "json",   //数据类型可以为 text xml json  script  jsonp
+                async: false,
+                success: function (data) {//返回的参数就是 action里面所有的有get和set方法的参数
+                    //alert("1");
+                    window.onload = function () {
+                        //alert("2");
+                        var jwctable = data.table;
+                        var table = document.getElementById("table1");
+
+                        for (var i = 0; i < jwctable.length; i++) {
+                            initlesson(i, jwctable[i].week, jwctable[i].jieciStart, jwctable[i].jieciEnd);
+                        }
+
+                        function initlesson(number, week, jieciStart, jieciEnd, name, teacher, weekStart, weekEnd, address) {
+                            for (var i = 0; i < 7; i++) {
+                                for (var j = 0; j < 12; j++) {
+                                    if (week == i && jieciStart == j && week != 7) {
+                                        //设置单元格css
+                                        var difference = jieciEnd - jieciStart + 1;
+                                        var idNumber = new Array();
+
+                                        for (var k = 0; k < difference; k++) {
+                                            var n = j + k;
+                                            idNumber[k] = i + "_" + n;
+                                        }
+
+                                        var course = new Array();
+                                        for (var k = 0; k < difference; k++) {
+                                            course[k] = document.getElementById(idNumber[k]);
+                                        }
+
+                                        //设置表格css
+                                        course[0].style.cssText = 'vertical-align:top; font-size:14px; padding:0; width:120px; height:115px !important';
+
+                                        //获取颜色随机参数
+                                        var number1 = Math.floor(Math.random() * 55 + 200);
+                                        var number2 = Math.floor(Math.random() * 55 + 200);
+                                        var number3 = Math.floor(Math.random() * 55 + 200);
+
+                                        for (var k = 0; k < difference; k++) {
+                                            //生成随机背景颜色
+                                            course[k].style.backgroundColor = "rgba(" + number1 + "," + number2
+                                                + "," + number3 + "," + "0.7)";
+                                        }
+
+                                        //添加课表信息
+                                        var td = table.rows[j].cells[i + 2];
+                                        td.innerHTML = jwctable[number].name + "<br>" +
+                                            jwctable[number].teacher + "<br>" +
+                                            jwctable[number].weekStart + "-" +
+                                            jwctable[number].weekEnd + "周<br>" +
+                                            jwctable[number].jieciStart + "-" +
+                                            jwctable[number].jieciEnd + "节<br>" +
+                                            jwctable[number].address;
+
+                                        //alert("3");
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        })
+
+    </script>
+
+</head>
+
+<body class="tab1">
+    <div class="tablepanel">
+
+        <table class="table1" id="table1">
+            <thead>
+                <tr class="tr1">
+                    <th colspan="2">节次</th>
+                    <th>星期日</th>
+                    <th>星期一</th>
+                    <th>星期二</th>
+                    <th>星期三</th>
+                    <th>星期四</th>
+                    <th>星期五</th>
+                    <th>星期六</th>
+                </tr>
+            </thead>
+
+            <tbody class="tb1">
+                <tr class="tr2">
+                    <th rowspan="2" class="th1">第一大节</th>
+                    <th class="th2">第一节</th>
+                    <td id="7_1"></td>
+                    <td id="1_1"></td>
+                    <td id="2_1"></td>
+                    <td id="3_1"></td>
+                    <td id="4_1"></td>
+                    <td id="5_1"></td>
+                    <td id="6_1"></td>
+                </tr>
+                <tr class="tr2">
+                    <th class="th2">第二节</th>
+                    <td id="7_2"></td>
+                    <td id="1_2"></td>
+                    <td id="2_2"></td>
+                    <td id="3_2"></td>
+                    <td id="4_2"></td>
+                    <td id="5_2"></td>
+                    <td id="6_2"></td>
+                </tr>
+                <tr class="tr2">
+                    <th rowspan="2" class="th1">第二大节</th>
+                    <th class="th2">第三节</th>
+                    <td id="7_3"></td>
+                    <td id="1_3"></td>
+                    <td id="2_3"></td>
+                    <td id="3_3"></td>
+                    <td id="4_3"></td>
+                    <td id="5_3"></td>
+                    <td id="6_3"></td>
+                </tr>
+                <tr class="tr2">
+                    <th class="th2">第四节</th>
+                    <td id="7_4"></td>
+                    <td id="1_4"></td>
+                    <td id="2_4"></td>
+                    <td id="3_4"></td>
+                    <td id="4_4"></td>
+                    <td id="5_4"></td>
+                    <td id="6_4"></td>
+                </tr>
+                <tr class="tr3">
+                    <th rowspan="3" class="th1">第三大节</th>
+                    <th class="th2">第五节</th>
+                    <td id="7_5"></td>
+                    <td id="1_5"></td>
+                    <td id="2_5"></td>
+                    <td id="3_5"></td>
+                    <td id="4_5"></td>
+                    <td id="5_5"></td>
+                    <td id="6_5"></td>
+                </tr>
+                <tr class="tr3">
+                    <th class="th2">第六节</th>
+                    <td id="7_6"></td>
+                    <td id="1_6"></td>
+                    <td id="2_6"></td>
+                    <td id="3_6"></td>
+                    <td id="4_6"></td>
+                    <td id="5_6"></td>
+                    <td id="6_6"></td>
+                </tr>
+                <tr class="tr3">
+                    <th class="th2">第七节</th>
+                    <td id="7_7"></td>
+                    <td id="1_7"></td>
+                    <td id="2_7"></td>
+                    <td id="3_7"></td>
+                    <td id="4_7"></td>
+                    <td id="5_7"></td>
+                    <td id="6_7"></td>
+                </tr>
+                <tr class="tr3">
+                    <th rowspan="2" class="th1">第四大节</th>
+                    <th class="th2">第八节</th>
+                    <td id="7_8"></td>
+                    <td id="1_8"></td>
+                    <td id="2_8"></td>
+                    <td id="3_8"></td>
+                    <td id="4_8"></td>
+                    <td id="5_8"></td>
+                    <td id="6_8"></td>
+                </tr>
+                <tr class="tr3">
+                    <th class="th2">第九节</th>
+                    <td id="7_9"></td>
+                    <td id="1_9"></td>
+                    <td id="2_9"></td>
+                    <td id="3_9"></td>
+                    <td id="4_9"></td>
+                    <td id="5_9"></td>
+                    <td id="6_9"></td>
+                </tr>
+                <tr class="tr4">
+                    <th rowspan="3" class="th1">第五大节</th>
+                    <th class="th2">第十节</th>
+                    <td id="7_10"></td>
+                    <td id="1_10"></td>
+                    <td id="2_10"></td>
+                    <td id="3_10"></td>
+                    <td id="4_10"></td>
+                    <td id="5_10"></td>
+                    <td id="6_10"></td>
+                </tr>
+                <tr class="tr4">
+                    <th class="th2">第十一节</th>
+                    <td id="7_11"></td>
+                    <td id="1_11"></td>
+                    <td id="2_11"></td>
+                    <td id="3_11"></td>
+                    <td id="4_11"></td>
+                    <td id="5_11"></td>
+                    <td id="6_11"></td>
+                </tr>
+                <tr class="tr4">
+                    <th class="th2">第十二节</th>
+                    <td id="7_12"></td>
+                    <td id="1_12"></td>
+                    <td id="2_12"></td>
+                    <td id="3_12"></td>
+                    <td id="4_12"></td>
+                    <td id="5_12"></td>
+                    <td id="6_12"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button>点击</button>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+body.tab1{
+    height: auto;
+    background: url(image/背琴.jpg) no-repeat center fixed;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+table, tr, th, td{
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid rgba(255,255,255,.3);
+    font-family: "微软雅黑","Microsoft YaHei",sans-serif;
+}
+
+.tr1{
+    height: 34px;
+}
+
+.th1{
+    width: 30px;
+    height: 224px;
+}
+
+.th2{
+    width: 150px;
+    height: 112px;
+}
+
+td{
+    width: 123px;
+    height: 112px
+}
+
+.tablepanel{
+    width: 1015px;
+    height: 1382px;
+    margin: 10% auto;
+}
+
+.tr1{
+    background-color:#cfe5ffde;
+}
+
+.tr2{
+    background-color:rgba(207,255,228,0.7);
+}
+
+.tr3{
+    background-color: rgba(255,230,207,0.7);
+}
+
+.tr4{
+    background-color: rgba(207,228,255,0.7);
+}

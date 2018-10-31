@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>登录</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="四川大学盗版教务处登录页面">
+    <meta name="description" content="嘤嘤狂吠嘤">
+
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+
+</head>
+
+<body class="login">
+    <div class="loginpanel">
+
+        <form class="form1" role="form">
+            <p class="p1">
+                欢迎使用盗版教务处系统
+            </p>
+
+            <br>
+
+            <div class="form-group">
+                <input type="text" class="input1" id="username" placeholder="学号" required oninvalid="setCustomValidity('学号不能为空~');"
+                    oninput="setCustomValidity('');" name="username" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="input1" id="password" placeholder="密码" required oninvalid="setCustomValidity('密码不能为空~');"
+                    oninput="setCustomValidity('');" name="password" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="input2" value="登 录" onclick="function1()">
+            </div>
+
+            <p class="p2">
+                <a href="http://zhjw.scu.edu.cn/forgetPassword/inputLoginID" target="_blank">
+                    <small>
+                        好像忘了什么？
+                    </small>
+                </a>
+                |
+                <a href="https://mail.qq.com/" target="_blank">
+                    <small>
+                        发个漂流瓶问一下
+                    </small>
+                </a>
+            </p>
+        </form>
+
+        <form class="form2" role="form">
+            <div class="login-footer">
+                &copy; MoyeMio
+            </div>
+        </form>
+
+    </div>
+
+
+    <script>
+
+        function createXHR() {
+            //支持原生的XHR对象
+            if (typeof XMLHttpRequest != "undefined") {
+                return new XMLHttpRequest();
+            }
+            //适用于IE7之前的版本
+            else if (typeof ActiveXObject != "undefined") {
+                if (typeof arguments.callee.activeXString != "String") {
+                    var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0", "MSXMLHttp"];
+                    var i, len;
+                    for (i = 0, len = versions.length; i < len; i++) {
+                        try {
+                            new ActiveXObject(versions[i]);
+                            arguments.callee.activeXString = versions[i];
+                            break;
+                        } catch (ex) {
+                            //跳过
+                        }
+                    }
+                }
+                return new ActiveXObject(arguments.callee.activeXString);
+            } else {
+                throw new Error("No XHR object available.");
+            }
+        }
+
+        function addURLParam(url, name, value) {
+            url += (url.indexOf("?") == -1 ? "?" : "&");
+            url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+            return url;
+        }
+
+        function function1() {
+            //创建xhr对象
+            var xhr = createXHR();
+
+            var username1 = document.getElementById("username").value;
+            var password1 = document.getElementById("password").value;
+            var url = "server1.txt";
+
+            //添加参数
+            url = addURLParam(url, "username", username1);
+            url = addURLParam(url, "password", password1);
+
+            //初始化请求
+            xhr.open("get", url, false);
+            //alert("success"); //有alert的时候不会显示input中的required提示
+
+            var result;
+            result = receiveData();
+
+            //alert("3");
+            //alert(result);
+            if (result == 0) {
+                //清空学号密码输入框
+                var username2 = document.getElementById("username");
+                username2.setAttribute("value", "");
+                var password2 = document.getElementById("password");
+                password2.setAttribute("value", "");
+
+                //弹出提示框
+                alert("学号或密码输入错误！");
+            }
+            else if (result == 1 || result == "1") {
+                //alert("4");
+                window.location.href = "table.html";
+                alert("success");
+            }
+
+        }
+
+        function receiveData() {
+            //alert("1");
+            var result1;
+            $.ajax({
+                url: "result.json",//地址，就是json文件的请求路径
+                type: "GET",//请求方式
+                dataType: "json",   //数据类型可以为 text xml json  script  jsonp
+                async: false,
+                success: function (data) {//返回的参数就是 action里面所有的有get和set方法的参数
+
+                    result1 = data.result;
+                    //alert("2");
+                    //result值格式? 
+                    //alert("1result = " + result1);
+                }
+            });
+            //alert("2result = " + result1);
+            return result1;
+        }
+
+    </script>
+</body>
+
+</html>

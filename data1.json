@@ -1,0 +1,24 @@
+{
+    "table": [
+        {
+            "name": "高等数学_01",
+            "teacher": "何锐",
+            "week": 3,
+            "weekStart": 1,
+            "weekEnd": 16,
+            "jieciStart": 1,
+            "jieciEnd": 3,
+            "address": "一教B"
+        },
+        {
+            "name": "大学英语",
+            "teacher": "宋庆华",
+            "week": 5,
+            "weekStart": 1,
+            "weekEnd": 16,
+            "jieciStart": 3,
+            "jieciEnd": 4,
+            "address": "一教D"
+        }
+    ]
+}
